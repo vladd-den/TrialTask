@@ -1,0 +1,34 @@
+<div class="container">
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Firstname</th>
+                <th>Active</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let user of users;">
+                <td><span>{{user.id}}</span></td>
+                <td><span>{{user.name}}</span></td>
+                <td><input type="checkbox" name="Active" [(ngModel)]="user.active" (ngModelChange)="changed(user)"></td>
+            </tr>
+        </tbody>
+    </table>
+    <button type="button" class="btn btn-success btn-sm" (click)="open(content)">Total</button>
+</div>
+
+<!--Popup-->
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Total</h4>
+    </div>
+    <div class="modal-body">
+        Total count: {{users.length}}
+        Active count: {{count}}
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close()">Close</button>
+    </div>
+</ng-template>
+<!--Popup end-->
